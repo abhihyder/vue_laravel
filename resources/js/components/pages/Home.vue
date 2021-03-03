@@ -3,10 +3,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header bg-primary text-white">Home Component</div>
+                    <div class="card-header bg-primary text-white">
+                        Home Component
+                    </div>
 
                     <div class="card-body">
-                        I'm an Home component.
+                        I'm an Home component. {{ count }}
                     </div>
                 </div>
             </div>
@@ -15,9 +17,16 @@
 </template>
 
 <script>
-    export default {
-        // mounted() {
-        //     console.log('Component mounted.')
-        // }
+export default {
+    data() {
+        return {
+           
+        };
+    },
+    computed: {
+        count() {
+            return this.$store.state.count;
+        }
     }
+};
 </script>

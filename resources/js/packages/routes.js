@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from "./components/pages/Home";
-import About from "./components/pages/About";
-import Contact from "./components/pages/Contact";
+import Home from "../components/pages/Home";
+import About from "../components/pages/About";
+import Contact from "../components/pages/Contact";
 
 Vue.use(VueRouter);
 
