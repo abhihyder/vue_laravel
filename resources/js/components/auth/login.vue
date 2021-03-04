@@ -1,96 +1,88 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="">
-                            <div class="form-group row">
-                                <label
-                                    for="email"
-                                    class="col-md-4 col-form-label text-md-right"
-                                    >E-Mail Address</label
-                                >
-
-                                <div class="col-md-6">
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        class="form-control"
-                                        name="email"
-                                        value=""
-                                        required
-                                        autocomplete="email"
-                                        autofocus
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label
-                                    for="password"
-                                    class="col-md-4 col-form-label text-md-right"
-                                    >Password</label
-                                >
-
-                                <div class="col-md-6">
-                                    <input
-                                        id="password"
-                                        type="password"
-                                        class="form-control"
-                                        name="password"
-                                        required
-                                        autocomplete="current-password"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            name="remember"
-                                            id="remember"
-                                        />
-                                        <label
-                                            class="form-check-label"
-                                            for="remember"
-                                            >Remember Me</label
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary"
+    <div>
+        <div class="pages-title section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pages-title-text text-center">
+                            <h2>Login</h2>
+                            <ul class="text-left">
+                                <li>
+                                    <router-link :to="{ name: 'home' }"
+                                        >Home</router-link
                                     >
-                                        Login
-                                    </button>
-
-                                    <a class="btn btn-link" href="javascript:;"
-                                        >Forgot Your Password?</a
-                                    >
-                                </div>
-                            </div>
-                        </form>
+                                </li>
+                                <li><span> // </span>Login</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- pages-title-end -->
+        <!-- login content section start -->
+        <section class="pages login-page section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-6">
+                        <div class="main-input padding60">
+                            <div class="log-title">
+                                <h3><strong>Login</strong></h3>
+                            </div>
+                            <div class="login-text">
+                                <div class="custom-input">
+                                    <p>
+                                        If you have an account with us, Please
+                                        log in!
+                                    </p>
+                                    <form @submit.prevent="submitLoginForm()">
+                                        <input
+                                            type="text"
+                                            v-model="form.email"
+                                            name="email"
+                                            placeholder="Email"
+                                        />
+                                        <input
+                                            type="password"
+                                            v-model="form.password"
+                                            name="password"
+                                            placeholder="Password"
+                                        />
+                                        <a class="forget" href="javascript:;"
+                                            >Forget your password?</a
+                                        >
+                                        <div class="submit-text">
+                                            <button type="submit">login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
 <script>
 export default {
-    // mounted() {
-    //     console.log('Component mounted.')
-    // }
+    data() {
+        return {
+            form: {}
+        };
+    },
+    methods: {
+        submitLoginForm() {
+            axios
+                .post("/login", this.form)
+                .then(results => {
+                    this.$router.push({ name: "home" });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    }
 };
 </script>

@@ -1,12 +1,61 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header bg-primary text-white">Contact Component</div>
-
-                    <div class="card-body">
-                        I'm an Contact component.
+    <div>
+        <div class="pages-title section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pages-title-text text-center">
+                            <h2>Contact Us</h2>
+                            <ul class="text-left">
+                                <li><router-link :to="{name:'home'}">Home</router-link></li>
+                                <li><span> // </span>Contact Us</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pages-title-end -->
+        <!-- contact content section start -->
+        <div class="pages contact-page section-padding">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="googleMap-info">
+                            <div id="googleMap"></div>
+                            <div class="map-info">
+                                <p><strong>Sellshop</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-text-center">
+                        <div class="contact-details">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="single-contact">
+                                        <i class="mdi mdi-map-marker"></i>
+                                        <p>No 58 A, East Madison Street,</p>
+                                        <p>Baltimore, MD, USA 4508</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="single-contact">
+                                        <i class="mdi mdi-phone"></i>
+                                        <p>(+660) 803 - 080 - 3081</p>
+                                        <p>(+660) 803 - 080 - 3082</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="single-contact">
+                                        <i class="mdi mdi-email"></i>
+                                        <p>info@companyname.com</p>
+                                        <p>support@company.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -15,9 +64,9 @@
 </template>
 
 <script>
-    export default {
-        // mounted() {
-        //     //
-        // }
-    }
+export default {
+    // mounted() {
+    //     //
+    // }
+};
 </script>

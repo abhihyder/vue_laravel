@@ -15,12 +15,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/about', 'HomeController@index');
-Route::get('/contact', 'HomeController@index');
+Route::get('/{path}', 'HomeController@index');
