@@ -1975,10 +1975,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      form: {}
+      form: {},
+      errors: {}
     };
   },
   methods: {
@@ -1990,7 +1996,7 @@ __webpack_require__.r(__webpack_exports__);
           name: "home"
         });
       })["catch"](function (error) {
-        console.log(error);
+        _this.errors = error.response.data.errors;
       });
     }
   }
@@ -3113,13 +3119,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isUserLoggedIn: false
+    };
+  },
+  computed: {
+    setIsUserLoggedIn: function setIsUserLoggedIn() {
+      this.isUserLoggedIn = true;
+    }
+  },
   methods: {
     logout: function logout() {
       axios.post("/logout").then(function (results) {
         console.log("logout");
       });
     }
+  },
+  created: function created() {// isUserLoggedIn();
   }
 });
 
@@ -47111,6 +47132,12 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
+                      _vm.errors["email"]
+                        ? _c("span", { staticClass: "text-danger mb-2" }, [
+                            _vm._v(_vm._s(_vm.errors["email"]))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c("input", {
                         directives: [
                           {
@@ -47880,49 +47907,51 @@ var render = function() {
                   _c("li", [
                     _vm._m(1),
                     _vm._v(" "),
-                    _c("ul", [
-                      _c(
-                        "li",
-                        [
+                    _vm.isUserLoggedIn == false
+                      ? _c("ul", [
                           _c(
-                            "router-link",
-                            { attrs: { to: { name: "login" } } },
-                            [_vm._v("Login")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "li",
-                        [
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: { name: "login" } } },
+                                [_vm._v("Login")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
                           _c(
-                            "router-link",
-                            { attrs: { to: { name: "register" } } },
-                            [_vm._v("Registar")]
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: { name: "register" } } },
+                                [_vm._v("Registar")]
+                              )
+                            ],
+                            1
                           )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "javascript:;" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.logout()
-                              }
-                            }
-                          },
-                          [_vm._v("Logout")]
-                        )
-                      ])
-                    ])
+                        ])
+                      : _c("ul", [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.logout()
+                                  }
+                                }
+                              },
+                              [_vm._v("Logout")]
+                            )
+                          ])
+                        ])
                   ]),
                   _vm._v(" "),
                   _vm._m(3)
@@ -77618,11 +77647,23 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var vuex = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
+    isUserLoggedIn: false,
     count: 0
   },
+  getters: {
+    getIsUserLoggedIn: function getIsUserLoggedIn(state) {
+      return state.isUserLoggedIn;
+    },
+    getCount: function getCount(state) {
+      return state.count;
+    }
+  },
   mutations: {
-    increment: function increment(state) {
-      state.count++;
+    setCount: function setCount(state, payload) {
+      state.count = payload;
+    },
+    setIsUserLoggedIn: function setIsUserLoggedIn(state, payload) {
+      state.isUserLoggedIn = payload;
     }
   }
 });

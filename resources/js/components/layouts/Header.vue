@@ -19,7 +19,7 @@
                                         <a href="javascript:;"
                                             ><i class="mdi mdi-account"></i
                                         ></a>
-                                        <ul>
+                                        <ul v-if="isUserLoggedIn == false">
                                             <li>
                                                 <router-link
                                                     :to="{ name: 'login' }"
@@ -32,6 +32,9 @@
                                                     >Registar</router-link
                                                 >
                                             </li>
+                                        </ul>
+
+                                        <ul v-else>
                                             <li>
                                                 <a href="my-account.html"
                                                     >My account</a
@@ -589,12 +592,25 @@
 
 <script>
 export default {
+    data() {
+        return {
+            isUserLoggedIn: false
+        };
+    },
+    computed: {
+        setIsUserLoggedIn() {
+            this.isUserLoggedIn = true;
+        }
+    },
     methods: {
         logout() {
             axios.post("/logout").then(results => {
                 console.log("logout");
             });
         }
+    },
+    created() {
+        // isUserLoggedIn();
     }
 };
 </script>

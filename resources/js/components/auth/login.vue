@@ -42,6 +42,11 @@
                                             name="email"
                                             placeholder="Email"
                                         />
+                                        <span
+                                            class="text-danger mb-2"
+                                            v-if="errors['email']"
+                                            >{{ errors["email"] }}</span
+                                        >
                                         <input
                                             type="password"
                                             v-model="form.password"
@@ -69,7 +74,8 @@
 export default {
     data() {
         return {
-            form: {}
+            form: {},
+            errors: {}
         };
     },
     methods: {
@@ -80,7 +86,7 @@ export default {
                     this.$router.push({ name: "home" });
                 })
                 .catch(error => {
-                    console.log(error);
+                    this.errors = error.response.data.errors;
                 });
         }
     }
