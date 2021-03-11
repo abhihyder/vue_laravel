@@ -1992,7 +1992,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/login", this.form).then(function (results) {
-        _this.$store.dispatch("setloggedInUserData");
+        _this.$store.dispatch("setLoggedInUserData");
 
         _this.$router.push({
           name: "home"
@@ -2532,6 +2532,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3125,18 +3132,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: {
-    loggedInUserData: function loggedInUserData() {
-      return this.$store.getters.getloggedInUserData;
-    }
-  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["getloggedInUserData", "getItems", "getPrice"])),
   methods: {
     logout: function logout() {
       var _this = this;
 
       axios.post("/logout").then(function (results) {
-        _this.$store.dispatch("setloggedInUserData");
+        _this.$store.dispatch("setLoggedInUserData");
 
         _this.$router.push({
           name: "login"
@@ -3145,7 +3152,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.$store.dispatch("setloggedInUserData");
+    this.$store.dispatch("setLoggedInUserData");
   }
 });
 
@@ -10260,6 +10267,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -11403,7 +11417,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["setItems"]))
+});
 
 /***/ }),
 
@@ -47912,13 +47975,13 @@ var render = function() {
                   _c("li", [
                     _vm._m(1),
                     _vm._v(" "),
-                    _vm.loggedInUserData
+                    _vm.getloggedInUserData
                       ? _c("ul", [
                           _c("li", [
                             _c("a", { attrs: { href: "my-account.html" } }, [
                               _vm._v(
                                 "\n                                                " +
-                                  _vm._s(_vm.loggedInUserData.name) +
+                                  _vm._s(_vm.getloggedInUserData.name) +
                                   "\n                                            "
                               )
                             ])
@@ -48080,7 +48143,25 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(9)
+          _c("div", { staticClass: "col-sm-2" }, [
+            _c("div", { staticClass: "cart-itmes" }, [
+              _c(
+                "a",
+                { staticClass: "cart-itme-a", attrs: { href: "cart.html" } },
+                [
+                  _c("i", { staticClass: "mdi mdi-cart" }),
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.getItems) +
+                      " items :\n                            "
+                  ),
+                  _c("strong", [_vm._v("$" + _vm._s(_vm.getPrice))])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(9)
+            ])
+          ])
         ])
       ])
     ])
@@ -48568,69 +48649,57 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-2" }, [
-      _c("div", { staticClass: "cart-itmes" }, [
-        _c("a", { staticClass: "cart-itme-a", attrs: { href: "cart.html" } }, [
-          _c("i", { staticClass: "mdi mdi-cart" }),
-          _vm._v("\n                            02 items : "),
-          _c("strong", [_vm._v("$86.00")])
+    return _c("div", { staticClass: "cartdrop" }, [
+      _c("div", { staticClass: "sin-itme clearfix" }, [
+        _c("i", { staticClass: "mdi mdi-close" }),
+        _vm._v(" "),
+        _c("a", { staticClass: "cart-img", attrs: { href: "cart.html" } }, [
+          _c("img", { attrs: { src: "assets/img/cart/1.png", alt: "" } })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "cartdrop" }, [
-          _c("div", { staticClass: "sin-itme clearfix" }, [
-            _c("i", { staticClass: "mdi mdi-close" }),
-            _vm._v(" "),
-            _c("a", { staticClass: "cart-img", attrs: { href: "cart.html" } }, [
-              _c("img", { attrs: { src: "assets/img/cart/1.png", alt: "" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-cart-text" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("h5", [_vm._v("men’s black t-shirt")])
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("Color : Black")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("Size : SL")]),
-              _vm._v(" "),
-              _c("strong", [_vm._v("$122.00")])
-            ])
+        _c("div", { staticClass: "menu-cart-text" }, [
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("h5", [_vm._v("men’s black t-shirt")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "sin-itme clearfix" }, [
-            _c("i", { staticClass: "mdi mdi-close" }),
-            _vm._v(" "),
-            _c("a", { staticClass: "cart-img", attrs: { href: "cart.html" } }, [
-              _c("img", { attrs: { src: "assets/img/cart/2.png", alt: "" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-cart-text" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("h5", [_vm._v("men’s black t-shirt")])
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("Color : Black")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("Size : SL")]),
-              _vm._v(" "),
-              _c("strong", [_vm._v("$132.00")])
-            ])
-          ]),
+          _c("span", [_vm._v("Color : Black")]),
           _vm._v(" "),
-          _c("div", { staticClass: "total" }, [
-            _c("span", [_vm._v("total "), _c("strong", [_vm._v("= $306.00")])])
-          ]),
+          _c("span", [_vm._v("Size : SL")]),
           _vm._v(" "),
-          _c("a", { staticClass: "goto", attrs: { href: "cart.html" } }, [
-            _vm._v("go to cart")
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            { staticClass: "out-menu", attrs: { href: "checkout.html" } },
-            [_vm._v("Check out")]
-          )
+          _c("strong", [_vm._v("$122.00")])
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sin-itme clearfix" }, [
+        _c("i", { staticClass: "mdi mdi-close" }),
+        _vm._v(" "),
+        _c("a", { staticClass: "cart-img", attrs: { href: "cart.html" } }, [
+          _c("img", { attrs: { src: "assets/img/cart/2.png", alt: "" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "menu-cart-text" }, [
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("h5", [_vm._v("men’s black t-shirt")])
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("Color : Black")]),
+          _vm._v(" "),
+          _c("span", [_vm._v("Size : SL")]),
+          _vm._v(" "),
+          _c("strong", [_vm._v("$132.00")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "total" }, [
+        _c("span", [_vm._v("total "), _c("strong", [_vm._v("= $306.00")])])
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "goto", attrs: { href: "cart.html" } }, [
+        _vm._v("go to cart")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "out-menu", attrs: { href: "checkout.html" } }, [
+        _vm._v("Check out")
       ])
     ])
   }
@@ -58771,9 +58840,153 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(1),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "grid-content" }, [
+                    _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+                      _c("div", { staticClass: "single-product" }, [
+                        _c("div", { staticClass: "product-img" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "actions-btn" }, [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.setItems($event)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "mdi mdi-cart" })]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _vm._m(4)
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(5)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+                      _c("div", { staticClass: "single-product" }, [
+                        _c("div", { staticClass: "product-img" }, [
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _vm._m(7),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "actions-btn" }, [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.setItems($event)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "mdi mdi-cart" })]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(8),
+                            _vm._v(" "),
+                            _vm._m(9)
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(10)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+                      _c("div", { staticClass: "single-product" }, [
+                        _c("div", { staticClass: "product-img" }, [
+                          _vm._m(11),
+                          _vm._v(" "),
+                          _vm._m(12),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "actions-btn" }, [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.setItems($event)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "mdi mdi-cart" })]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(13),
+                            _vm._v(" "),
+                            _vm._m(14)
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(15)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+                      _c("div", { staticClass: "single-product" }, [
+                        _c("div", { staticClass: "product-img" }, [
+                          _vm._m(16),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "actions-btn" }, [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.setItems($event)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "mdi mdi-cart" })]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(17),
+                            _vm._v(" "),
+                            _vm._m(18)
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(19)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(20),
+                    _vm._v(" "),
+                    _vm._m(21),
+                    _vm._v(" "),
+                    _vm._m(22),
+                    _vm._v(" "),
+                    _vm._m(23),
+                    _vm._v(" "),
+                    _vm._m(24),
+                    _vm._v(" "),
+                    _vm._m(25),
+                    _vm._v(" "),
+                    _vm._m(26),
+                    _vm._v(" "),
+                    _vm._m(27)
+                  ])
+                ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(28)
               ])
             ])
           ])
@@ -58781,7 +58994,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(3)
+    _vm._m(29)
   ])
 }
 var staticRenderFns = [
@@ -58795,738 +59008,746 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "grid-content" }, [
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("div", { staticClass: "pro-type" }, [
-                _c("span", [_vm._v("new")])
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/9.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+    return _c("div", { staticClass: "pro-type" }, [_c("span", [_vm._v("new")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("img", {
+        attrs: { src: "assets/img/products/9.jpg", alt: "Product Title" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "javascript:;",
+          "data-toggle": "modal",
+          "data-target": "#quick-view"
+        }
+      },
+      [_c("i", { staticClass: "mdi mdi-eye" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("i", { staticClass: "mdi mdi-heart" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "product-dsc" }, [
+      _c("p", [
+        _c("a", { attrs: { href: "javascript:;" } }, [
+          _vm._v("men’s Black t-shirt")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ratting" }, [
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-half" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-outline" })
+      ]),
+      _vm._v(" "),
+      _c("span", [_vm._v("$65.20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pro-type sell" }, [
+      _c("span", [_vm._v("sell")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("img", {
+        attrs: { src: "assets/img/products/2.jpg", alt: "Product Title" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "javascript:;",
+          "data-toggle": "modal",
+          "data-target": "#quick-view"
+        }
+      },
+      [_c("i", { staticClass: "mdi mdi-eye" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("i", { staticClass: "mdi mdi-heart" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "product-dsc" }, [
+      _c("p", [
+        _c("a", { attrs: { href: "javascript:;" } }, [
+          _vm._v("men’s White t-shirt")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ratting" }, [
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-half" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-outline" })
+      ]),
+      _vm._v(" "),
+      _c("span", [_vm._v("$65.20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pro-type" }, [_c("span", [_vm._v("-15")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("img", {
+        attrs: { src: "assets/img/products/8.jpg", alt: "Product Title" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "javascript:;",
+          "data-toggle": "modal",
+          "data-target": "#quick-view"
+        }
+      },
+      [_c("i", { staticClass: "mdi mdi-eye" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("i", { staticClass: "mdi mdi-heart" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "product-dsc" }, [
+      _c("p", [
+        _c("a", { attrs: { href: "javascript:;" } }, [
+          _vm._v("men’s Black t-shirt")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ratting" }, [
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-half" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-outline" })
+      ]),
+      _vm._v(" "),
+      _c("span", [_vm._v("$65.20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("img", {
+        attrs: { src: "assets/img/products/24.jpg", alt: "Product Title" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "javascript:;",
+          "data-toggle": "modal",
+          "data-target": "#quick-view"
+        }
+      },
+      [_c("i", { staticClass: "mdi mdi-eye" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("i", { staticClass: "mdi mdi-heart" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "product-dsc" }, [
+      _c("p", [
+        _c("a", { attrs: { href: "javascript:;" } }, [
+          _vm._v("men’s Grey t-shirt")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ratting" }, [
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-half" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "mdi mdi-star-outline" })
+      ]),
+      _vm._v(" "),
+      _c("span", [_vm._v("$66.20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/13.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Black t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$65.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("div", { staticClass: "pro-type sell" }, [
-                _c("span", [_vm._v("sell")])
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/2.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s White t-shirt")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$95.20")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/11.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s White t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$65.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("div", { staticClass: "pro-type" }, [
-                _c("span", [_vm._v("-15")])
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/8.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s Black t-shirt")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$45.20")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/14.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Black t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$65.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/24.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s Black t-shirt")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$85.20")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("div", { staticClass: "pro-type" }, [_c("span", [_vm._v("new")])]),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/25.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Grey t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$66.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/13.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s Gray t-shirt")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$55.20")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/10.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s White t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$95.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/11.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s Black t-shirt")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$55.20")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("div", { staticClass: "pro-type sell" }, [
+            _c("span", [_vm._v("sell")])
+          ]),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/2.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Black t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$45.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/14.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s White t-shirt")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$65.20")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("div", { staticClass: "pro-type" }, [_c("span", [_vm._v("-15")])]),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/10.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Black t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$85.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("div", { staticClass: "pro-type" }, [
-                _c("span", [_vm._v("new")])
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/25.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s Black t-shirt")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$65.20")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
+      _c("div", { staticClass: "single-product" }, [
+        _c("div", { staticClass: "product-img" }, [
+          _c("a", { attrs: { href: "javascript:;" } }, [
+            _c("img", {
+              attrs: { src: "assets/img/products/26.jpg", alt: "Product Title" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actions-btn" }, [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-cart" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Gray t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$55.20")])
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:;",
+                  "data-toggle": "modal",
+                  "data-target": "#quick-view"
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-eye" })]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "mdi mdi-heart" })
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/10.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Black t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$55.20")])
+        _c("div", { staticClass: "product-dsc" }, [
+          _c("p", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("men’s Gray t-shirt")
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("div", { staticClass: "pro-type sell" }, [
-                _c("span", [_vm._v("sell")])
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/2.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
-            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratting" }, [
+            _c("i", { staticClass: "mdi mdi-star" }),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s White t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$65.20")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("div", { staticClass: "pro-type" }, [
-                _c("span", [_vm._v("-15")])
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/10.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
-            ]),
+            _c("i", { staticClass: "mdi mdi-star" }),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Black t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$65.20")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-6 col-md-3" }, [
-          _c("div", { staticClass: "single-product" }, [
-            _c("div", { staticClass: "product-img" }, [
-              _c("a", { attrs: { href: "javascript:;" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/img/products/26.jpg",
-                    alt: "Product Title"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "actions-btn" }, [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-cart" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:;",
-                      "data-toggle": "modal",
-                      "data-target": "#quick-view"
-                    }
-                  },
-                  [_c("i", { staticClass: "mdi mdi-eye" })]
-                ),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _c("i", { staticClass: "mdi mdi-heart" })
-                ])
-              ])
-            ]),
+            _c("i", { staticClass: "mdi mdi-star" }),
             _vm._v(" "),
-            _c("div", { staticClass: "product-dsc" }, [
-              _c("p", [
-                _c("a", { attrs: { href: "javascript:;" } }, [
-                  _vm._v("men’s Gray t-shirt")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ratting" }, [
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-half" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "mdi mdi-star-outline" })
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("$66.20")])
-            ])
-          ])
+            _c("i", { staticClass: "mdi mdi-star-half" }),
+            _vm._v(" "),
+            _c("i", { staticClass: "mdi mdi-star-outline" })
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$66.20")])
         ])
       ])
     ])
@@ -77657,21 +77878,25 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 var vuex = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     loggedInUserData: "",
-    count: 0
+    items: 2,
+    price: 154
   },
   getters: {
     getloggedInUserData: function getloggedInUserData(state) {
       return state.loggedInUserData;
     },
-    getCount: function getCount(state) {
-      return state.count;
+    getItems: function getItems(state) {
+      return state.items;
+    },
+    getPrice: function getPrice(state) {
+      return state.price;
     }
   },
   mutations: {
-    setCount: function setCount(state, payload) {
-      state.count = payload;
+    setItems: function setItems(state) {
+      state.items += 1;
     },
-    setloggedInUserData: function setloggedInUserData(state, payload) {
+    setLoggedInUserData: function setLoggedInUserData(state) {
       axios.get("/user/auth_check").then(function (results) {
         state.loggedInUserData = results.data;
       })["catch"](function (error) {
@@ -77680,8 +77905,11 @@ var vuex = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     }
   },
   actions: {
-    setloggedInUserData: function setloggedInUserData(context) {
-      context.commit("setloggedInUserData");
+    setLoggedInUserData: function setLoggedInUserData(context) {
+      context.commit("setLoggedInUserData");
+    },
+    setItems: function setItems(context) {
+      context.commit("setItems");
     }
   }
 });

@@ -19,10 +19,12 @@
                                         <a href="javascript:;"
                                             ><i class="mdi mdi-account"></i
                                         ></a>
-                                        <ul v-if="loggedInUserData">
+                                        <ul v-if="getloggedInUserData">
                                             <li>
                                                 <a href="my-account.html">
-                                                    {{ loggedInUserData.name }}
+                                                    {{
+                                                        getloggedInUserData.name
+                                                    }}
                                                 </a>
                                             </li>
                                             <li>
@@ -542,7 +544,8 @@
                         <div class="cart-itmes">
                             <a class="cart-itme-a" href="cart.html">
                                 <i class="mdi mdi-cart"></i>
-                                02 items : <strong>$86.00</strong>
+                                {{ getItems }} items :
+                                <strong>${{ getPrice }}</strong>
                             </a>
                             <div class="cartdrop">
                                 <div class="sin-itme clearfix">
@@ -592,22 +595,24 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
     computed: {
-        loggedInUserData() {
-            return this.$store.getters.getloggedInUserData;
-        }
+        // loggedInUserData() {
+        //     return this.$store.getters.getloggedInUserData;
+        // },
+        ...mapGetters(["getloggedInUserData", "getItems", "getPrice"]),
     },
     methods: {
         logout() {
             axios.post("/logout").then(results => {
-                this.$store.dispatch("setloggedInUserData");
+                this.$store.dispatch("setLoggedInUserData");
                 this.$router.push({ name: "login" });
             });
-        }
+        },
     },
     created() {
-        this.$store.dispatch("setloggedInUserData");
+        this.$store.dispatch("setLoggedInUserData");
     }
 };
 </script>

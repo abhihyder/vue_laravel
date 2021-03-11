@@ -6,21 +6,25 @@ Vue.use(Vuex);
 const vuex = new Vuex.Store({
     state: {
         loggedInUserData: "",
-        count: 0
+        items: 2,
+        price: 154
     },
     getters: {
         getloggedInUserData: state => {
             return state.loggedInUserData;
         },
-        getCount: state => {
-            return state.count;
+        getItems: state => {
+            return state.items;
+        },
+        getPrice: state => {
+            return state.price;
         }
     },
     mutations: {
-        setCount: (state, payload) => {
-            state.count = payload;
+        setItems: state => {
+            state.items += 1;
         },
-        setloggedInUserData: (state, payload) => {
+        setLoggedInUserData: state => {
             axios
                 .get("/user/auth_check")
                 .then(results => {
@@ -32,9 +36,13 @@ const vuex = new Vuex.Store({
         }
     },
     actions: {
-        setloggedInUserData: context => {
-            context.commit("setloggedInUserData");
-        }
+        setLoggedInUserData: context => {
+            context.commit("setLoggedInUserData");
+        },
+        setItems: context => {
+            context.commit("setItems");
+        },
+
     }
 });
 

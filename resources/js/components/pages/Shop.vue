@@ -7,7 +7,11 @@
                         <div class="pages-title-text text-center">
                             <h2>Shop</h2>
                             <ul class="text-left">
-                                <li><router-link :to="{name:'home'}">Home</router-link></li>
+                                <li>
+                                    <router-link :to="{ name: 'home' }"
+                                        >Home</router-link
+                                    >
+                                </li>
                                 <li><span> // </span>Shop</li>
                             </ul>
                         </div>
@@ -29,14 +33,18 @@
                                             <li>
                                                 <ul class="nav-view">
                                                     <li>
-                                                        <router-link to="/product-grid" >
+                                                        <router-link
+                                                            to="/product-grid"
+                                                        >
                                                             <i
                                                                 class="mdi mdi-view-module"
                                                             ></i>
                                                         </router-link>
                                                     </li>
                                                     <li>
-                                                        <router-link to="/product-list">
+                                                        <router-link
+                                                            to="/product-list"
+                                                        >
                                                             <i
                                                                 class="mdi mdi-view-list"
                                                             ></i>
@@ -65,7 +73,11 @@
                                                         alt="Product Title"
                                                 /></a>
                                                 <div class="actions-btn">
-                                                    <a href="javascript:;"
+                                                    <a
+                                                        href="javascript:;"
+                                                        @click.prevent="
+                                                            setItems
+                                                        "
                                                         ><i
                                                             class="mdi mdi-cart"
                                                         ></i
@@ -119,7 +131,11 @@
                                                         alt="Product Title"
                                                 /></a>
                                                 <div class="actions-btn">
-                                                    <a href="javascript:;"
+                                                    <a
+                                                        href="javascript:;"
+                                                        @click.prevent="
+                                                            setItems
+                                                        "
                                                         ><i
                                                             class="mdi mdi-cart"
                                                         ></i
@@ -173,7 +189,11 @@
                                                         alt="Product Title"
                                                 /></a>
                                                 <div class="actions-btn">
-                                                    <a href="javascript:;"
+                                                    <a
+                                                        href="javascript:;"
+                                                        @click.prevent="
+                                                            setItems
+                                                        "
                                                         ><i
                                                             class="mdi mdi-cart"
                                                         ></i
@@ -224,7 +244,11 @@
                                                         alt="Product Title"
                                                 /></a>
                                                 <div class="actions-btn">
-                                                    <a href="javascript:;"
+                                                    <a
+                                                        href="javascript:;"
+                                                        @click.prevent="
+                                                            setItems
+                                                        "
                                                         ><i
                                                             class="mdi mdi-cart"
                                                         ></i
@@ -696,13 +720,27 @@
                                                     ></i
                                                 ></a>
                                             </li>
-                                            <li><a href="javascript:;">1</a></li>
-                                            <li><a href="javascript:;">2</a></li>
-                                            <li><a href="javascript:;">3</a></li>
-                                            <li><a href="javascript:;">4</a></li>
-                                            <li><a href="javascript:;">5</a></li>
-                                            <li><a href="javascript:;">...</a></li>
-                                            <li><a href="javascript:;">10</a></li>
+                                            <li>
+                                                <a href="javascript:;">1</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">2</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">3</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">4</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">5</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">...</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">10</a>
+                                            </li>
                                             <li>
                                                 <a href="javascript:;"
                                                     ><i
@@ -1058,10 +1096,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="list-btn">
-                                                            <a href="javascript:;"
+                                                            <a
+                                                                href="javascript:;"
                                                                 >add to cart</a
                                                             >
-                                                            <a href="javascript:;"
+                                                            <a
+                                                                href="javascript:;"
                                                                 >wishlist</a
                                                             >
                                                             <a
@@ -1083,42 +1123,48 @@
                                                                     </h5>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="javascript:;"
+                                                                    <a
+                                                                        href="javascript:;"
                                                                         ><i
                                                                             class="mdi mdi-facebook"
                                                                         ></i
                                                                     ></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="javascript:;"
+                                                                    <a
+                                                                        href="javascript:;"
                                                                         ><i
                                                                             class="mdi mdi-twitter"
                                                                         ></i
                                                                     ></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="javascript:;"
+                                                                    <a
+                                                                        href="javascript:;"
                                                                         ><i
                                                                             class="mdi mdi-linkedin"
                                                                         ></i
                                                                     ></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="javascript:;"
+                                                                    <a
+                                                                        href="javascript:;"
                                                                         ><i
                                                                             class="mdi mdi-vimeo"
                                                                         ></i
                                                                     ></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="javascript:;"
+                                                                    <a
+                                                                        href="javascript:;"
                                                                         ><i
                                                                             class="mdi mdi-dribbble"
                                                                         ></i
                                                                     ></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="javascript:;"
+                                                                    <a
+                                                                        href="javascript:;"
                                                                         ><i
                                                                             class="mdi mdi-instagram"
                                                                         ></i
@@ -1142,7 +1188,10 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
-    
-}
+    methods: {
+        ...mapActions(["setItems"])
+    }
+};
 </script>
