@@ -1992,11 +1992,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/login", this.form).then(function (results) {
+        _this.$store.dispatch("setloggedInUserData");
+
         _this.$router.push({
           name: "home"
         });
-
-        _this.$store.dispatch("setIsUserLoggedIn", true);
       })["catch"](function (error) {
         _this.errors = error.response.data.errors;
       });
@@ -3124,10 +3124,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
-    isUserLoggedIn: function isUserLoggedIn() {
-      return this.$store.getters.getIsUserLoggedIn;
+    loggedInUserData: function loggedInUserData() {
+      return this.$store.getters.getloggedInUserData;
     }
   },
   methods: {
@@ -3135,13 +3136,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/logout").then(function (results) {
-        _this.$store.dispatch("setIsUserLoggedIn", false);
+        _this.$store.dispatch("setloggedInUserData");
 
         _this.$router.push({
           name: "login"
         });
       });
     }
+  },
+  created: function created() {
+    this.$store.dispatch("setloggedInUserData");
   }
 });
 
@@ -47908,8 +47912,39 @@ var render = function() {
                   _c("li", [
                     _vm._m(1),
                     _vm._v(" "),
-                    _vm.isUserLoggedIn == false
+                    _vm.loggedInUserData
                       ? _c("ul", [
+                          _c("li", [
+                            _c("a", { attrs: { href: "my-account.html" } }, [
+                              _vm._v(
+                                "\n                                                " +
+                                  _vm._s(_vm.loggedInUserData.name) +
+                                  "\n                                            "
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.logout()
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                                Logout\n                                            "
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      : _c("ul", [
                           _c(
                             "li",
                             [
@@ -47934,31 +47969,12 @@ var render = function() {
                             1
                           )
                         ])
-                      : _c("ul", [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c(
-                              "a",
-                              {
-                                attrs: { href: "javascript:;" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.logout()
-                                  }
-                                }
-                              },
-                              [_vm._v("Logout")]
-                            )
-                          ])
-                        ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ]),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(3)
               ])
             ])
           ])
@@ -47995,7 +48011,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("ul", { staticClass: "dropdown" }, [
-                          _vm._m(5),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c(
                             "li",
@@ -48024,14 +48040,14 @@ var render = function() {
                           _vm._v("Shop")
                         ]),
                         _vm._v(" "),
-                        _vm._m(6)
+                        _vm._m(5)
                       ],
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(6),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c(
                       "li",
@@ -48060,11 +48076,11 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(9)
+              _vm._m(8)
             ])
           ]),
           _vm._v(" "),
-          _vm._m(10)
+          _vm._m(9)
         ])
       ])
     ])
@@ -48092,14 +48108,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "javascript:;" } }, [
       _c("i", { staticClass: "mdi mdi-account" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "my-account.html" } }, [_vm._v("My account")])
     ])
   },
   function() {
@@ -77648,12 +77656,12 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var vuex = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    isUserLoggedIn: false,
+    loggedInUserData: "",
     count: 0
   },
   getters: {
-    getIsUserLoggedIn: function getIsUserLoggedIn(state) {
-      return state.isUserLoggedIn;
+    getloggedInUserData: function getloggedInUserData(state) {
+      return state.loggedInUserData;
     },
     getCount: function getCount(state) {
       return state.count;
@@ -77663,13 +77671,17 @@ var vuex = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     setCount: function setCount(state, payload) {
       state.count = payload;
     },
-    setIsUserLoggedIn: function setIsUserLoggedIn(state, payload) {
-      state.isUserLoggedIn = payload;
+    setloggedInUserData: function setloggedInUserData(state, payload) {
+      axios.get("/user/auth_check").then(function (results) {
+        state.loggedInUserData = results.data;
+      })["catch"](function (error) {
+        state.loggedInUserData = "";
+      });
     }
   },
   actions: {
-    setIsUserLoggedIn: function setIsUserLoggedIn(context, payload) {
-      context.commit("setIsUserLoggedIn", payload);
+    setloggedInUserData: function setloggedInUserData(context) {
+      context.commit("setloggedInUserData");
     }
   }
 });

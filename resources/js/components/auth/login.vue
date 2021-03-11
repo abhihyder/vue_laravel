@@ -83,8 +83,8 @@ export default {
             axios
                 .post("/login", this.form)
                 .then(results => {
+                    this.$store.dispatch("setloggedInUserData");
                     this.$router.push({ name: "home" });
-                    this.$store.dispatch("setIsUserLoggedIn", true);
                 })
                 .catch(error => {
                     this.errors = error.response.data.errors;

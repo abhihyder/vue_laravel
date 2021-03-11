@@ -19,7 +19,23 @@
                                         <a href="javascript:;"
                                             ><i class="mdi mdi-account"></i
                                         ></a>
-                                        <ul v-if="isUserLoggedIn == false">
+                                        <ul v-if="loggedInUserData">
+                                            <li>
+                                                <a href="my-account.html">
+                                                    {{ loggedInUserData.name }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="javascript:;"
+                                                    @click.prevent="logout()"
+                                                >
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <ul v-else>
                                             <li>
                                                 <router-link
                                                     :to="{ name: 'login' }"
@@ -30,21 +46,6 @@
                                                 <router-link
                                                     :to="{ name: 'register' }"
                                                     >Registar</router-link
-                                                >
-                                            </li>
-                                        </ul>
-
-                                        <ul v-else>
-                                            <li>
-                                                <a href="my-account.html"
-                                                    >My account</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="javascript:;"
-                                                    @click.prevent="logout()"
-                                                    >Logout</a
                                                 >
                                             </li>
                                         </ul>
@@ -593,17 +594,20 @@
 <script>
 export default {
     computed: {
-        isUserLoggedIn() {
-            return this.$store.getters.getIsUserLoggedIn;
+        loggedInUserData() {
+            return this.$store.getters.getloggedInUserData;
         }
     },
     methods: {
         logout() {
             axios.post("/logout").then(results => {
-                this.$store.dispatch("setIsUserLoggedIn", false);
+                this.$store.dispatch("setloggedInUserData");
                 this.$router.push({ name: "login" });
             });
         }
+    },
+    created() {
+        this.$store.dispatch("setloggedInUserData");
     }
 };
 </script>

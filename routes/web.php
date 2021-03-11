@@ -22,3 +22,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/{path}', 'HomeController@index');
+Route::get('/user/auth_check', 'UserController@authUser');
