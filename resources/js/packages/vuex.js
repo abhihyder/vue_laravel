@@ -9,19 +9,24 @@ const vuex = new Vuex.Store({
         count: 0
     },
     getters: {
-        getIsUserLoggedIn(state) {
+        getIsUserLoggedIn: state => {
             return state.isUserLoggedIn;
         },
-        getCount(state) {
+        getCount: state => {
             return state.count;
         }
     },
     mutations: {
-        setCount(state, payload) {
+        setCount: (state, payload) => {
             state.count = payload;
         },
-        setIsUserLoggedIn(state, payload) {
+        setIsUserLoggedIn: (state, payload) => {
             state.isUserLoggedIn = payload;
+        }
+    },
+    actions: {
+        setIsUserLoggedIn: (context, payload) => {
+            context.commit("setIsUserLoggedIn", payload);
         }
     }
 });

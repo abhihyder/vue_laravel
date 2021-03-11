@@ -1995,6 +1995,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.$router.push({
           name: "home"
         });
+
+        _this.$store.dispatch("setIsUserLoggedIn", true);
       })["catch"](function (error) {
         _this.errors = error.response.data.errors;
       });
@@ -3123,24 +3125,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      isUserLoggedIn: false
-    };
-  },
   computed: {
-    setIsUserLoggedIn: function setIsUserLoggedIn() {
-      this.isUserLoggedIn = true;
+    isUserLoggedIn: function isUserLoggedIn() {
+      return this.$store.getters.getIsUserLoggedIn;
     }
   },
   methods: {
     logout: function logout() {
+      var _this = this;
+
       axios.post("/logout").then(function (results) {
-        console.log("logout");
+        _this.$store.dispatch("setIsUserLoggedIn", false);
+
+        _this.$router.push({
+          name: "login"
+        });
       });
     }
-  },
-  created: function created() {// isUserLoggedIn();
   }
 });
 
@@ -77664,6 +77665,11 @@ var vuex = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     setIsUserLoggedIn: function setIsUserLoggedIn(state, payload) {
       state.isUserLoggedIn = payload;
+    }
+  },
+  actions: {
+    setIsUserLoggedIn: function setIsUserLoggedIn(context, payload) {
+      context.commit("setIsUserLoggedIn", payload);
     }
   }
 });

@@ -592,25 +592,18 @@
 
 <script>
 export default {
-    data() {
-        return {
-            isUserLoggedIn: false
-        };
-    },
     computed: {
-        setIsUserLoggedIn() {
-            this.isUserLoggedIn = true;
+        isUserLoggedIn() {
+            return this.$store.getters.getIsUserLoggedIn;
         }
     },
     methods: {
         logout() {
             axios.post("/logout").then(results => {
-                console.log("logout");
+                this.$store.dispatch("setIsUserLoggedIn", false);
+                this.$router.push({ name: "login" });
             });
         }
-    },
-    created() {
-        // isUserLoggedIn();
     }
 };
 </script>
