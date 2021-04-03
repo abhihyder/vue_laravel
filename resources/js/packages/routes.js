@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from "vue";
+import VueRouter from "vue-router";
 
 import Home from "../components/pages/Home";
 import About from "../components/pages/About";
@@ -13,49 +13,71 @@ import Register from "../components/auth/Register";
 Vue.use(VueRouter);
 
 const routes = new VueRouter({
-    mode: 'history',
-    routes :[
+    mode: "history",
+    routes: [
         {
-            path: '/home',
+            path: "/",
             component: Home,
-            name:'home'
+            name: "root"
         },
         {
-            path: '/about',
+            path: "/home",
+            component: Home,
+            name: "home"
+        },
+        {
+            path: "/about",
             component: About,
-            name:'about'
+            name: "about"
         },
         {
-            path: '/shop',
+            path: "/shop",
             component: Shop,
-            name:'shop'
+            name: "shop"
         },
         {
-            path: '/product-grid',
+            path: "/product-grid",
             component: ProductGrid,
-            name:'product-grid'
+            name: "product-grid"
         },
         {
-            path: '/product-list',
+            path: "/product-list",
             component: ProductList,
-            name:'product-list'
+            name: "product-list"
         },
         {
-            path: '/contact',
+            path: "/contact",
             component: Contact,
-            name:'contact'
+            name: "contact"
         },
         {
-            path: '/login',
+            path: "/login",
             component: Login,
-            name:'login'
+            name: "login"
+            // beforeEnter: (to, from, next) => {
+            //     let isAuthenticated = localStorage.getItem("userAuthenticate")
+            //         ? localStorage.getItem("userAuthenticate")
+            //         : "no";
+            //     if (isAuthenticated == "yes")
+            //         next({ name: "Login" });
+            //     else next();
+            // }
         },
         {
-            path: '/register',
+            path: "/register",
             component: Register,
-            name:'register'
-        },
+            name: "register"
+        }
     ]
-  });
+});
 
-  export default routes;
+// routes.beforeEach((to, from, next) => {
+//     let isAuthenticated = localStorage.getItem("userAuthenticate")
+//         ? localStorage.getItem("userAuthenticate")
+//         : "no";
+//     if (to.name == "Login" && isAuthenticated == "yes")
+//         next({ name: "Login" });
+//     else next();
+// });
+
+export default routes;

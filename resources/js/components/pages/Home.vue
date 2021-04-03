@@ -77,9 +77,7 @@
                     <div class="col-sm-4">
                         <div class="single-colect banner collect-one">
                             <a href="javascript:;"
-                                ><img
-                                    src="assets/img/collect/4.jpg"
-                                    alt=""
+                                ><img src="assets/img/collect/4.jpg" alt=""
                             /></a>
                         </div>
                     </div>
@@ -100,18 +98,14 @@
                         </div>
                         <div class="collect-img banner margin single-colect">
                             <a href="javascript:;"
-                                ><img
-                                    src="assets/img/collect/5.jpg"
-                                    alt=""
+                                ><img src="assets/img/collect/5.jpg" alt=""
                             /></a>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="collect-img banner single-colect">
                             <a href="javascript:;"
-                                ><img
-                                    src="assets/img/collect/6.jpg"
-                                    alt=""
+                                ><img src="assets/img/collect/6.jpg" alt=""
                             /></a>
                         </div>
                         <div class="colect-text ">
@@ -504,10 +498,7 @@
                     <div class="col-sm-7 col-md-5">
                         <div class="text-center large-img tab-content">
                             <div class="tab-pane fade in active" id="dress1">
-                                <img
-                                    src="assets/img/coming/l1.jpg"
-                                    alt=""
-                                />
+                                <img src="assets/img/coming/l1.jpg" alt="" />
                                 <div class="count-text clearfix">
                                     <ul id="countdown-1">
                                         <li>
@@ -554,10 +545,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="dress2">
-                                <img
-                                    src="assets/img/coming/l2.jpg"
-                                    alt=""
-                                />
+                                <img src="assets/img/coming/l2.jpg" alt="" />
                                 <div class="count-text clearfix">
                                     <ul id="countdown-2">
                                         <li>
@@ -3146,6 +3134,30 @@ export default {
         count() {
             return this.$store.state.count;
         }
+    },
+    beforeCreate() {
+        console.log("Befor create home");
+    },
+    created() {
+        console.log("created home");
+    },
+    beforeMount() {
+        console.log("beforeMount home");
+    },
+    mounted() {
+        console.log("mounted home");
+    },
+    beforUpdate() {
+        console.log("befor update home");
+    },
+    updated(){
+        console.log("updated home");
+    },
+    beforeDestroy() {
+        console.log("Befor destroy home");
+    },
+    destroyed() {
+        console.log("destroyed home");
     }
 };
 </script>

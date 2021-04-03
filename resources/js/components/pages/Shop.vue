@@ -1192,6 +1192,30 @@ import { mapGetters, mapActions } from "vuex";
 export default {
     methods: {
         ...mapActions(["setItems"])
+    },
+    beforeCreate(){
+        console.log('Befor create shop')
+    },
+    created(){
+        console.log('created shop')
+    },
+    beforeMount(){
+        console.log('beforeMount shop')
+    },
+    mounted(){
+        console.log('mounted shop')
+    },
+     beforUpdate() {
+        console.log("befor update shope");
+    },
+    updated(){
+        console.log("updated shop");
+    },
+    beforeDestroy(){
+        console.log('Befor destroy shop')
+    },
+    destroyed(){
+        console.log('destroyed shop')
     }
 };
 </script>

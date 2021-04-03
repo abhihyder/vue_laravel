@@ -83,6 +83,8 @@ export default {
             axios
                 .post("/login", this.form)
                 .then(results => {
+                    localStorage.setItem("userAuthenticate", "yes");
+                    this.$store.dispatch("setUserAuthenticate");
                     this.$store.dispatch("setLoggedInUserData");
                     this.$router.push({ name: "home" });
                 })

@@ -8,8 +8,8 @@
                             <div class="middel-top">
                                 <div class="left floatleft">
                                     <p>
-                                        <i class="mdi mdi-clock"></i> Mon-Fri :
-                                        09:00-19:00
+                                        <i class="mdi mdi-clock"></i>
+                                        {{ currentTime }}
                                     </p>
                                 </div>
                             </div>
@@ -19,11 +19,11 @@
                                         <a href="javascript:;"
                                             ><i class="mdi mdi-account"></i
                                         ></a>
-                                        <ul v-if="getloggedInUserData">
+                                        <ul v-if="getUserAuthenticate == 'yes'">
                                             <li>
-                                                <a href="my-account.html">
+                                                <a href="#">
                                                     {{
-                                                        getloggedInUserData.name
+                                                        getLoggedInUserData.name
                                                     }}
                                                 </a>
                                             </li>
@@ -93,7 +93,7 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="logo">
-                            <router-link to="/"
+                            <router-link :to="{ name: 'root' }"
                                 ><img src="assets/img/logo2.png" alt="Sellshop"
                             /></router-link>
                         </div>
@@ -596,22 +596,33 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import moment from "moment";
 export default {
+    data() {
+        return {
+            currentTime: moment().format("ddd - Do MMM YYYY, hh:mm a")
+        };
+    },
     computed: {
-        // loggedInUserData() {
-        //     return this.$store.getters.getloggedInUserData;
-        // },
-        ...mapGetters(["getloggedInUserData", "getItems", "getPrice"]),
+        ...mapGetters([
+            "getUserAuthenticate",
+            "getLoggedInUserData",
+            "getItems",
+            "getPrice"
+        ])
     },
     methods: {
         logout() {
             axios.post("/logout").then(results => {
+                localStorage.setItem("userAuthenticate", "no");
+                this.$store.dispatch("setUserAuthenticate");
                 this.$store.dispatch("setLoggedInUserData");
                 this.$router.push({ name: "login" });
             });
-        },
+        }
     },
     created() {
+        this.$store.dispatch("setUserAuthenticate");
         this.$store.dispatch("setLoggedInUserData");
     }
 };
